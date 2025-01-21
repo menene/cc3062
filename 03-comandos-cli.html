@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación: Comandos CLI Básicos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Introducción -->
+            <section>
+                <h1>Comandos CLI Básicos</h1>
+                <p>Comandos para trabajar en sistemas sin interfaz gráfica.</p>
+            </section>
+
+            <!-- Navegación por directorios -->
+            <section>
+                <section>
+                    <h2>Navegación por Directorios</h2>
+                </section>
+                <section>
+                    <h3>pwd</h3>
+                    <p><strong>Significado:</strong> Print Working Directory</p>
+                    <p>Muestra la ruta actual del directorio.</p>
+                    <pre><code>$ pwd
+/home/usuario</code></pre>
+                </section>
+                <section>
+                    <h3>ls</h3>
+                    <p><strong>Significado:</strong> List Directory Contents</p>
+                    <p>Lista archivos y carpetas en el directorio actual.</p>
+                    <pre><code>$ ls
+documentos fotos descargas</code></pre>
+                    <p>Opciones útiles:</p>
+                    <ul>
+                        <li><code>ls -l</code>: Muestra detalles como permisos y tamaños.</li>
+                        <li><code>ls -a</code>: Incluye archivos ocultos.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>cd</h3>
+                    <p><strong>Significado:</strong> Change Directory</p>
+                    <p>Cambia al directorio especificado.</p>
+                    <pre><code>$ cd documentos
+$ pwd
+/home/usuario/documentos</code></pre>
+                    <p>Volver al directorio anterior:</p>
+                    <pre><code>$ cd ..</code></pre>
+                </section>
+            </section>
+
+            <!-- Manipulación de Archivos y Directorios -->
+            <section>
+                <section>
+                    <h2>Manipulación de Archivos y Directorios</h2>
+                </section>
+                <section>
+                    <h3>mkdir</h3>
+                    <p><strong>Significado:</strong> Make Directory</p>
+                    <p>Crea un nuevo directorio.</p>
+                    <pre><code>$ mkdir nueva_carpeta</code></pre>
+                </section>
+                <section>
+                    <h3>touch</h3>
+                    <p>Crea un archivo vacío.</p>
+                    <pre><code>$ touch archivo.txt</code></pre>
+                </section>
+                <section>
+                    <h3>cp</h3>
+                    <p><strong>Significado:</strong> Copy</p>
+                    <p>Copia un archivo o directorio.</p>
+                    <pre><code>$ cp archivo.txt copia_archivo.txt</code></pre>
+                </section>
+                <section>
+                    <h3>mv</h3>
+                    <p><strong>Significado:</strong> Move</p>
+                    <p>Mueve o renombra un archivo.</p>
+                    <pre><code>$ mv archivo.txt carpeta/</code></pre>
+                </section>
+                <section>
+                    <h3>rm</h3>
+                    <p><strong>Significado:</strong> Remove</p>
+                    <p>Elimina archivos o carpetas.</p>
+                    <pre><code>$ rm archivo.txt</code></pre>
+                    <p>Eliminar carpetas con contenido:</p>
+                    <pre><code>$ rm -r carpeta</code></pre>
+                </section>
+            </section>
+
+            <!-- Visualización de Contenido -->
+            <section>
+                <section>
+                    <h2>Visualización de Contenido</h2>
+                </section>
+                <section>
+                    <h3>cat</h3>
+                    <p>Muestra el contenido de un archivo.</p>
+                    <pre><code>$ cat archivo.txt</code></pre>
+                </section>
+                <section>
+                    <h3>head</h3>
+                    <p>Muestra las primeras líneas de un archivo.</p>
+                    <pre><code>$ head archivo.txt</code></pre>
+                </section>
+                <section>
+                    <h3>tail</h3>
+                    <p>Muestra las últimas líneas de un archivo.</p>
+                    <pre><code>$ tail archivo.txt</code></pre>
+                </section>
+            </section>
+
+            <!-- Permisos y Propietarios -->
+            <section>
+                <section>
+                    <h2>Permisos y Propietarios</h2>
+                </section>
+                <section>
+                    <h3>chmod</h3>
+                    <p><strong>Significado:</strong> Change Mode</p>
+                    <p>Cambia los permisos de un archivo.</p>
+                    <pre><code>$ chmod 755 archivo.txt</code></pre>
+                    <p>Permisos comunes:</p>
+                    <ul>
+                        <li><code>755</code>: Lectura, escritura y ejecución para el propietario; solo lectura y ejecución para otros.</li>
+                        <li><code>644</code>: Lectura y escritura para el propietario; solo lectura para otros.</li>
+                        <li><code>777</code>: Lectura, escritura y ejecución para todos.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>chown</h3>
+                    <p><strong>Significado:</strong> Change Owner</p>
+                    <p>Cambia el propietario de un archivo.</p>
+                    <pre><code>$ chown usuario archivo.txt</code></pre>
+                </section>
+            </section>
+
+            <!-- Ejercicios -->
+            <section>
+                <h2>Ejercicio</h2>
+                <p><a href="https://github.com/denn1s/command-line-clue" target="_blank">https://github.com/denn1s/command-line-clue</a></p>
+            </section>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize();
+    </script>
+</body>
+</html>
