@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- ¿Qué es CSS? -->
+            <section>
+                <h2>CSS</h2>
+                <p>Semestre 1, 2025</p>
+            </section>
+            <section>
+                <h3>Definición de CSS</h3>
+                <ul>
+                    <li><strong>Cascading Style Sheets</strong></li>
+                    <li>Define la apariencia y diseño de páginas web</li>
+                    <li>Separa el contenido (HTML) del diseño (CSS)</li>
+                    <li>Permite crear sitios web responsivos y atractivos</li>
+                </ul>
+            </section>
+            <section>
+                <h3>¿Cómo funciona CSS?</h3>
+                <p>CSS se aplica a los elementos HTML para modificar su estilo visual.</p>
+                <ul>
+                    <li>Define colores, fuentes, tamaños, márgenes y más</li>
+                    <li>Se puede aplicar de manera inline, interna o externa</li>
+                    <li>CSS sigue el modelo de cascada para resolver conflictos de estilos</li>
+                </ul>
+            </section>
+            <section>
+                <p><strong>HTML</strong> estructura el contenido, <strong>CSS</strong> lo estiliza.</p>
+            </section>
+
+            <!-- Historia de CSS -->
+            <section>
+                <section>
+                    <h2>Historia de CSS</h2>
+                </section>
+                <section>
+                    <h3>Orígenes</h3>
+                    <ul>
+                        <li>Antes de CSS, los estilos se aplicaban con etiquetas HTML como <code>&lt;font&gt;</code></li>
+                        <li>Esto dificultaba la organización y mantenimiento</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Evolución</h3>
+                    <ul>
+                        <li><strong>1996</strong>: CSS1 - Introducción de estilos básicos</li>
+                        <li><strong>1998</strong>: CSS2 - Posicionamiento y mejoras</li>
+                        <li><strong>2011+</strong>: CSS3 - Animaciones, flexbox, grid</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- Selectores más usados -->
+            <section>
+                <section>
+                    <h2>Selectores</h2>
+                </section>
+                <section>
+                    <h3>¿Qué es un selector?</h3>
+                    <p>Un selector en CSS se usa para elegir qué elementos HTML serán estilizados.</p>
+                    <ul>
+                        <li>Los selectores permiten aplicar estilos a múltiples elementos</li>
+                        <li>CSS ofrece varios tipos de selectores para mayor precisión</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Selector de Etiqueta</h3>
+                    <p>Aplica estilos a todas las etiquetas de un mismo tipo.</p>
+                    <pre><code>p {
+    color: red;
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Selector de Clase</h3>
+                    <p>Se usa para aplicar estilos a un grupo de elementos con la misma clase.</p>
+                    <pre><code>.destacado {
+    background-color: yellow;
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Selector de ID</h3>
+                    <p>Se usa para aplicar estilos a un solo elemento con un ID específico.</p>
+                    <pre><code>#titulo {
+    font-size: 24px;
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Selector de Descendencia</h3>
+                    <p>Selecciona elementos dentro de otro elemento específico.</p>
+                    <pre><code>div p {
+    color: blue;
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Selector de Atributo</h3>
+                    <p>Selecciona elementos según un atributo específico.</p>
+                    <pre><code>input[type="text"] {
+    border: 1px solid black;
+}</code></pre>
+                </section>
+            </section>
+
+            <!-- Formas de aplicar CSS -->
+            <section>
+                <section>
+                    <h2>Aplicación de CSS</h2>
+                </section>
+                <section>
+                    <h3>CSS Inline</h3>
+                    <pre><code>&lt;p style="color: blue; font-size: 16px;"&gt;CSS inline&lt;/p&gt;</code></pre>
+                </section>
+                <section>
+                    <h3>CSS en el Header</h3>
+                    <pre><code>&lt;style&gt;
+p {
+    color: blue;
+    font-size: 16px;
+}
+&lt;/style&gt;</code></pre>
+                </section>
+                <section>
+                    <h3>CSS en Archivo Externo</h3>
+                    <pre><code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></pre>
+                </section>
+            </section>
+
+            <!-- Cascada y Especificidad -->
+            <section>
+                <section>
+                    <h2>Cascada y Especificidad</h2>
+                </section>
+                <section>
+                    <h3>Orden de Aplicación</h3>
+                    <ul>
+                        <li>El último estilo declarado tiene prioridad</li>
+                        <li>Los estilos inline tienen mayor prioridad</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Reglas de Especificidad</h3>
+                    <pre><code>p { color: red; } /* Baja prioridad */
+.destacado { color: blue; } /* Mayor prioridad */
+#titulo { color: green; } /* Aún más prioridad */
+!important { color: yellow; } /* Máxima prioridad */</code></pre>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize();
+    </script>
+</body>
+</html>
