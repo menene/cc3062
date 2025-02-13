@@ -154,6 +154,146 @@ p {
 !important { color: yellow; } /* Máxima prioridad */</code></pre>
                 </section>
             </section>
+
+            <!-- Selectores Avanzados -->
+            <section>
+                <section>
+                    <h2>Selectores Avanzados</h2>
+                    <p>Los selectores avanzados permiten seleccionar elementos HTML con mayor precisión y flexibilidad.</p>
+                </section>
+                <section>
+                    <h3>Selectores de Atributo</h3>
+                    <p>Permiten aplicar estilos a elementos en función de los atributos que tienen.</p>
+                    <pre><code>input[type="text"] {
+    border: 2px solid blue;
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Selectores de Hijos y Hermanos</h3>
+                    <p>Estos selectores permiten estilizar elementos basándose en su relación con otros elementos.</p>
+                    <table style="font-size: 18px;">
+                        <tr>
+                            <th>Selector</th>
+                            <th>Descripción</th>
+                            <th>Ejemplo</th>
+                        </tr>
+                        <tr>
+                            <td><code>div > p</code></td>
+                            <td>Selecciona solo los párrafos que sean hijos directos de un div</td>
+                            <td><code>div > p { color: red; }</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>h1 + p</code></td>
+                            <td>Selecciona el primer párrafo que sea hermano inmediato de un h1</td>
+                            <td><code>h1 + p { font-style: italic; }</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>h1 ~ p</code></td>
+                            <td>Selecciona todos los párrafos que sean hermanos de un h1</td>
+                            <td><code>h1 ~ p { font-weight: bold; }</code></td>
+                        </tr>
+                    </table>
+                </section>
+                <section>
+                    <h3>Pseudo-clases</h3>
+                    <p>Son estados especiales de los elementos que permiten aplicar estilos dinámicos.</p>
+                    <pre><code>a:hover {
+    color: orange;
+}
+
+li:nth-child(odd) {
+    background-color: lightgray;
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Pseudo-elementos</h3>
+                    <p>Permiten agregar contenido visual antes o después de un elemento sin modificar el HTML.</p>
+                    <pre><code>p::before {
+    content: "⚠ ";
+    color: red;
+}
+
+p::after {
+    content: " 🔹";
+}</code></pre>
+                </section>
+            </section>
+
+            <!-- Unidades y Funciones en CSS -->
+            <section>
+                <section>
+                    <h2>Unidades y Funciones</h2>
+                    <p>CSS permite usar diversas unidades de medida y funciones que facilitan cálculos dinámicos.</p>
+                </section>
+                <section>
+                    <h3>Unidades Relativas y Absolutas</h3>
+                    <p>Las unidades en CSS pueden ser **absolutas**, con un tamaño fijo, o **relativas**, que dependen del contexto:</p>
+                    <table style="font-size: 18px;">
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Unidad</th>
+                            <th>Descripción</th>
+                        </tr>
+                        <tr>
+                            <td>Absoluta</td>
+                            <td><code>px</code></td>
+                            <td>Píxeles, unidad fija independiente del entorno.</td>
+                        </tr>
+                        <tr>
+                            <td>Relativa</td>
+                            <td><code>em</code></td>
+                            <td>Relativa al tamaño de fuente del elemento padre.</td>
+                        </tr>
+                        <tr>
+                            <td>Relativa</td>
+                            <td><code>rem</code></td>
+                            <td>Relativa al tamaño de fuente del `html`.</td>
+                        </tr>
+                        <tr>
+                            <td>Relativa</td>
+                            <td><code>vw</code></td>
+                            <td>Porcentaje del ancho de la ventana del navegador.</td>
+                        </tr>
+                        <tr>
+                            <td>Relativa</td>
+                            <td><code>vh</code></td>
+                            <td>Porcentaje de la altura de la ventana del navegador.</td>
+                        </tr>
+                    </table>
+                </section>
+                <section>
+                    <pre><code>body {
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 2em; /* 2 veces el tamaño del texto padre */
+}
+
+.container {
+    width: 50vw; /* La mitad del ancho de la pantalla */
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Funciones Útiles</h3>
+                    <p>Funciones como `calc()`, `clamp()` y `var()` permiten cálculos dinámicos en CSS.</p>
+                    <pre><code>div {
+    width: calc(100% - 50px);
+    font-size: clamp(1rem, 2vw, 2rem);
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Uso de Variables</h3>
+                    <p>Las variables CSS permiten definir valores reutilizables.</p>
+                    <pre><code>:root {
+    --main-color: blue;
+}
+
+h1 {
+    color: var(--main-color);
+}</code></pre>
+                </section>
+            </section>
         </div>
     </div>
 
