@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Portada -->
+            <section>
+                <h2>JavaScript</h2>
+                <p>Semestre 1, 2025</p>
+            </section>
+
+            <!-- ¿Qué es JavaScript? -->
+            <section>
+                <section>
+                    <h2>¿Qué es JavaScript?</h2>
+                </section>
+                <section>
+                    <p>JavaScript es un lenguaje de programación interpretado que se ejecuta en el navegador del usuario.</p>
+                </section>
+                <section>
+                    <p>Permite la manipulación del contenido, interactividad y dinamismo en páginas web.</p>
+                </section>
+                <section>
+                    <p>Es un lenguaje basado en eventos, asincrónico y de tipado dinámico.</p>
+                </section>
+                <section>
+                    <h3>Ejemplo</h3>
+                    <pre><code class="javascript">console.log("¡Hola, Mundo!");</code></pre>
+                    <pre><code class="javascript">alert("¡Hola, Mundo!");</code></pre>
+                </section>
+            </section>
+
+            <!-- Historia de JavaScript -->
+            <section>
+                <section>
+                    <h2>Historia de JavaScript</h2>
+                </section>
+                <section>
+                    <p>JavaScript fue creado en 1995 por Brendan Eich mientras trabajaba en Netscape.</p>
+                </section>
+                <section>
+                    <p>Fue diseñado en solo 10 días y su propósito inicial era hacer las páginas web interactivas.</p>
+                </section>
+                <section>
+                    <p>Desde entonces, ha evolucionado hasta convertirse en uno de los lenguajes más importantes del desarrollo web.</p>
+                </section>
+            </section>
+
+            <!-- Relación con HTML y CSS -->
+            <section>
+                <section>
+                    <h2>HTML y CSS</h2>
+                </section>
+                <section>
+                    <p>JavaScript trabaja en conjunto con HTML y CSS para crear experiencias dinámicas en la web</p>
+                </section>
+                <section>
+                    <ul>
+                        <li><strong>HTML</strong>: Proporciona la estructura del contenido.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li><strong>CSS</strong>: Define el estilo y la apariencia.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li><strong>JavaScript</strong>: Manipula el contenido y la interactividad.</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- Variables en JavaScript -->
+            <section>
+                <section>
+                    <h2>Variables en JavaScript</h2>
+                </section>
+                <section>
+                    <p>Tenemos 3 formas de definir variables</p>
+                </section>
+                <section>
+                    <ul>
+                        <li><code>var</code>: Desuso, ya que tiene ámbito global o de función.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li><code>let</code>: Tiene ámbito de bloque y permite reasignación.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li><code>const</code>: Tiene ámbito de bloque y su valor no puede cambiar.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Ejemplo</h3>
+                    <pre><code class="javascript">let nombre = "Ana";
+const edad = 30;
+console.log(`Hola, ${nombre}. Tienes ${edad} años.`);</code></pre>
+                </section>
+            </section>
+
+            <!-- Funciones en JavaScript -->
+            <section>
+                <section>
+                    <h2>Funciones en JavaScript</h2>
+                </section>
+                <section>
+                    <p>Las funciones en JavaScript permiten encapsular y reutilizar el código.</p>
+                </section>
+                <section>
+                    <h3>Funciones Declarativas</h3>
+                    <p>Son funciones definidas con la palabra clave <code>function</code> y pueden ser llamadas antes de su declaración.</p>
+                    <pre><code class="javascript">
+console.log(saludar("Juan"));
+
+function saludar(nombre) {
+    return `Hola, ${nombre}!`;
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Funciones Expresivas</h3>
+                    <p>Son funciones almacenadas en una variable. No pueden ser llamadas antes de su definición.</p>
+                    <pre><code class="javascript">const despedir = function(nombre) {
+    return `Adiós, ${nombre}!`;
+};
+console.log(despedir("Juan"));</code></pre>
+                </section>
+                <section>
+                    <pre><code class="javascript">const usuario = {
+    nombre: "Ana",
+    saludar: function() {
+        console.log(`Hola, soy ${this.nombre}`);
+    }
+};
+
+usuario.saludar();</code></pre>
+                </section>
+                <section>
+                    <h3>Arrow Functions</h3>
+                    <p>Introducidas en ES6, permiten escribir funciones más concisas y sin necesidad de <code>return</code> explícito en funciones de una línea.</p>
+                    <pre><code class="javascript">const sumar = (a, b) => a + b;
+console.log(sumar(2, 3));</code></pre>
+                </section>
+                <section>
+                    <h3>Funciones Callback</h3>
+                    <p>Funciones pasadas como argumento a otra función.</p>
+                    <pre><code class="javascript">console.log("Inicio");
+
+setTimeout(() => {
+    console.log("Esto aparece después de 2 segundos");
+}, 2000);
+
+console.log("Fin");
+                        </code></pre>
+                </section>
+            </section>
+
+            <!-- Introducción al DOM -->
+            <section>
+                <section>
+                    <h2>¿Qué es el DOM?</h2>
+                </section>
+                <section>
+                    <p>El DOM (Document Object Model) es una representación estructurada de la página web.</p>
+                </section>
+                <section>
+                    <p>Permite acceder y modificar los elementos HTML desde JavaScript.</p>
+                </section>
+                <section>
+                    <h3>Ejemplo</h3>
+                    <pre><code class="javascript">console.log(document.title);</code></pre>
+                </section>
+            </section>
+
+            <!-- Selección de Nodos del DOM -->
+            <section>
+                <section>
+                    <h2>Selección de Nodos del DOM</h2>
+                </section>
+                <section>
+                    <p>Para acceder a elementos del DOM, podemos usar alguna de estas funciones:</p>
+                </section>
+                <section>
+                    <ul>
+                        <li><code>document.getElementById("id")</code>: Selecciona un elemento por su ID.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li><code>document.querySelector("selector")</code>: Selecciona el primer elemento que coincide con el selector.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li><code>document.querySelectorAll("selector")</code>: Selecciona todos los elementos que coinciden con el selector.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Ejemplos</h3>
+                    <pre><code class="javascript">let elemento = document.querySelector("h1");
+console.log(elemento.textContent);</code></pre>
+                </section>
+                <section>
+                    <pre><code>let elementos = document.querySelectorAll(".text");
+elementos.forEach(el => console.log(el.textContent));</code></pre>
+                </section>
+            </section>
+
+            <!-- Creación y Edición de Nodos -->
+            <section>
+                <section>
+                    <h2>Manipulando el DOM</h2>
+                </section>
+                <section>
+                    <h3>Crear elementos</h3>
+                    <p>Podemos crear y modificar elementos HTML dinámicamente.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">let nuevoParrafo = document.createElement("p");
+
+nuevoParrafo.textContent = "Párrafo agregado con JavaScript.";
+
+document.body.appendChild(nuevoParrafo);</code></pre>
+                </section>
+                <section>
+                    <h3>Modificar elementos</h3>
+                    <p>JavaScript permite modificar los estilos de un elemento.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">let titulo = document.querySelector("h1");
+titulo.style.color = "blue";</code></pre>
+                </section>
+            </section>
+
+            <!-- Event Listeners en JavaScript -->
+            <section>
+                <section>
+                    <h2>Event Listeners</h2>
+                </section>
+                <section>
+                    <p>Los event listeners permiten ejecutar código cuando ocurre un evento en la página web.</p>
+                </section>
+                <section>
+                    <h3>Click en un botón</h3>
+                    <p>El siguiente código muestra una alerta al hacer clic en un botón.</p>
+                    <pre style="font-size: 11px;"><code class="javascript">document.getElementById("btn").addEventListener("click", function() {
+    alert("¡Botón clickeado!");
+});</code></pre>
+                </section>
+                <section>
+                    <h3>Tipos de eventos comunes</h3>
+                </section>
+                <section>
+                    <ul>
+                        <li><code>click</code>: Cuando se hace clic en un elemento.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li><code>mouseover</code>: Cuando el mouse pasa sobre un elemento.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li><code>keydown</code>: Cuando se presiona una tecla.</li>
+                    </ul>
+                </section>
+                <section>
+                    <ul>
+                        <li><code>submit</code>: Cuando se envía un formulario.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Ejemplo</h3>
+                </section>
+                <section>
+                    <p>Al hacer clic en el botón, se muestra un mensaje personalizado con el nombre ingresado.</p>
+                    <pre style="font-size: 11px;"><code class="javascript">document.getElementById("miBoton").addEventListener("click", function() {
+    let nombre = document.getElementById("nombre").value;
+    if (nombre.trim() !== "") {
+        alert("¡Hola, " + nombre + "!");
+    } else {
+        alert("Por favor, ingresa tu nombre.");
+    }
+});</code></pre>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize();
+    </script>
+</body>
+</html>
