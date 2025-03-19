@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css" />
+    <style>
+        pre code {
+            /* font-size: 1.3em !important;
+            white-space: pre-wrap !important;
+            word-wrap: break-word !important; */
+            width: 100%;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Portada -->
+            <section>
+                <h2>Promises</h2>
+                <p>Semestre 1, 2025</p>
+            </section>
+
+            <!-- Introducción -->
+            <section>
+                <section>
+                    <h2>Introducción</h2>
+                </section>
+                <section>
+                    <p>JavaScript es un lenguaje asíncrono y no bloqueante.</p>
+                </section>
+                <section>
+                    <p>Ejemplo de código bloqueante:</p>
+                    <pre><code class="javascript">console.log("Inicio");
+alert("Bloqueo del código");
+console.log("Fin");</code></pre>
+                </section>
+                <section>
+                    <h3>¿Qué es la asincronía?</h3>
+                </section>
+                <section>
+                    <p>La asincronía permite ejecutar código sin bloquear la ejecución de otras tareas.</p>
+                </section>
+                <section>
+                    <p>Ejemplo de asincronía en la vida real: Mientras esperas una pizza en un restaurante, puedes hacer otras cosas sin quedarte inmóvil.</p>
+                </section>
+                <section>
+                    <p>En JavaScript, esto se maneja con:</p>
+                    <ul>
+                        <li>Callbacks</li>
+                        <li>Promesas</li>
+                        <li>Async/Await</li>
+                    </ul>
+                </section>                
+                <section>
+                    <p>El manejo incorrecto de la asincronía puede afectar el rendimiento y la experiencia del usuario.</p>
+                </section>
+            </section>
+
+            <!-- Problema -->
+            <section>
+                <section>
+                    <h2>Problema</h2>
+                </section>
+                <section>
+                    <p>Si la asincronía no se maneja bien, la interfaz puede quedar bloqueada.</p>
+                    <p>
+                        🔹 El usuario no ve nada hasta que los datos sean cargados. <br>
+                        🔹 Si la API es lenta, la página parecerá "congelada".
+                    </p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+// Bloquea la interfaz hasta que todos los datos sean obtenidos
+const productos = fetch('https://api.example.com/productos')
+    .then(response => response.json());
+
+// Esto no se ejecuta hasta que fetch termine 
+console.log("Cargando interfaz..."); 
+
+productos.then(data => {
+    console.log("Datos cargados:", data);
+});</code></pre>
+                </section>
+                <section>
+                    <h2>Solución:</h2>
+                    <h3>Cargar la interfaz primero</h3>
+                </section>
+                <section>
+                    <p>En lugar de bloquear la ejecución, cargamos la interfaz primero.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+console.log("Renderizando la interfaz..."); // Se ejecuta inmediatamente
+
+async function cargarProductos() {
+    try {
+        const response = await fetch('https://api.example.com/productos');
+        const productos = await response.json();
+
+        console.log("Datos cargados:", productos);
+    } catch (error) {
+        console.error("Error al cargar productos:", error);
+    }
+}
+
+cargarProductos(); // Se ejecuta en segundo plano</code></pre>
+                </section>
+                <section>
+                    <p>✅ La interfaz se muestra de inmediato al usuario.</p>
+                </section>
+                <section>
+                    <p>✅ Los datos se cargan en segundo plano sin afectar la navegación.</p>
+                </section>
+                <section>
+                    <p>✅ Si la API es lenta, el usuario puede seguir interactuando con la página.</p>
+                </section>
+            </section>
+
+            <!-- Solución -->
+            <section>
+                <h2> 💡 <br>Solución(es)</h2>
+            </section>
+
+            <!-- Promise API -->
+            <section>
+                <section>
+                    <h2>Promise API</h2>
+                </section>
+                <section>
+                    <p>Una Promesa representa el resultado eventual de una operación asíncrona.</p>
+                </section>
+                <section>
+                    <p>Estados de una promesa:</p>
+                    <ul>
+                        <li>Pending (⏳ Pendiente)</li>
+                        <li>Fulfilled (✅ Completada)</li>
+                        <li>Rejected (❌ Rechazada)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Ejemplo</h3>
+                    <pre><code class="javascript">
+const promesa = new Promise((resolve, reject) => {
+    let exito = true;
+
+    if (exito) {
+        resolve("Operación exitosa");
+    } else {
+        reject("Ocurrió un error");
+    }
+});
+
+promesa.then(console.log).catch(console.error);</code></pre>
+                </section>
+                <section>
+                    <h3>Encadenamiento de Promesas</h3>
+                    <pre><code class="javascript">
+fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error("Error en la petición:", error));</code></pre>
+                </section>
+                <section>
+                    <p>Podemos encadenar múltiples `.then()` para ejecutar operaciones en secuencia.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => {
+        console.log("Datos obtenidos:", data);
+
+        return fetch('https://api.example.com/more-data');
+    })
+    .then(response => response.json())
+    .then(moreData => console.log("Más datos:", moreData))
+    .catch(error => console.error("Error en la petición:", error));</code></pre>
+                </section>
+                <section>
+                    <p>🔹 Cada `.then()` espera el resultado del anterior antes de ejecutarse.</p>
+                </section>
+            </section>
+
+            <!-- Async/Await -->
+            <section>
+                <section>
+                    <h2>Async/Await</h2>
+                </section>
+                <section>
+                    <p>Async/Await es una forma moderna de manejar Promesas en JavaScript.</p>
+                </section>
+                <section>
+                    <p>✅ Hace que el código sea más legible y estructurado.</p>
+                </section>
+                <section>
+                    <p>✅ Permite manejar errores fácilmente con `try...catch`.</p>
+                </section>
+                <section>
+                    <h3>Cómo funciona async</h3>
+                </section>
+                <section>
+                    <p>Una función declarada con async <b>siempre devuelve una promesa.</b></p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+async function obtenerMensaje() {
+    return "Hola, mundo!";
+}
+
+obtenerMensaje().then(console.log); // "Hola, mundo!"</code></pre>
+                </section>
+                <section>
+                    <h3>Cómo funciona await</h3>
+                </section>
+                <section>
+                    <p>await <b>pausa la ejecución</b> de la función hasta que la Promesa se resuelva.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+async function obtenerDatos() {
+    console.log("Iniciando petición...");
+
+    let respuesta = await fetch('https://api.example.com/data');
+    let datos = await respuesta.json();
+    
+    console.log("Datos obtenidos:", datos);
+}
+
+obtenerDatos();</code></pre>
+                </section>
+                <section>
+                    <p>✅ Se evita el encadenamiento de <b>.then()</b>, haciendo el código más claro.</p>
+                </section>
+                <section>
+                    <h3>Manejo de errores con try...catch</h3>
+                </section>
+                <section>
+                    <p>Con <b>try...catch</b>, podemos capturar errores en operaciones await.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+async function cargarDatos() {
+    try {
+        let respuesta = await fetch('https://api.example.com/data');
+        if (!respuesta.ok) throw new Error("Error en la API");
+        let datos = await respuesta.json();
+        
+        console.log("Datos:", datos);
+    } catch (error) {
+        console.error("Error capturado:", error);
+    }
+}
+
+cargarDatos();</code></pre>
+                </section>
+                <section>
+                    <p>✅ Manejo estructurado de errores sin necesidad de <b>.catch()</b> externo.</p>
+                </section>
+                <section>
+                    <h3>Ejemplo de async/await con múltiples llamadas</h3>
+                </section>
+                <section>
+                    <p>Podemos esperar múltiples promesas usando <b>await</b> en varias llamadas.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+async function obtenerInfoCompleta() {
+    try {
+        let usuario = await fetch('https://api.example.com/user');
+        let pedidos = await fetch('https://api.example.com/orders');
+        
+        let usuarioData = await usuario.json();
+        let pedidosData = await pedidos.json();
+        
+        console.log("Usuario:", usuarioData);
+        console.log("Pedidos:", pedidosData);
+    } catch (error) {
+        console.error("Error al obtener datos:", error);
+    }
+}
+
+obtenerInfoCompleta();</code></pre>
+                </section>
+                <section>
+                    <p>✅ Cada await espera la respuesta anterior antes de continuar.</p>
+                </section>
+            </section>
+
+            <!-- Fetch API -->
+            <section>
+                <section>
+                    <h2>Fetch API</h2>
+                </section>
+                <section>
+                    <p>Fetch API permite realizar peticiones HTTP de manera asíncrona.</p>
+                </section>
+                <section>
+                    <p>✅ Más moderno que `XMLHttpRequest`.</p>
+                </section>
+                <section>
+                    <p>✅ Devuelve una <b>Promesa.</b></p>
+                </section>
+                <section>
+                    <h3>Ejemplo básico de `fetch`</h3>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => console.log("Datos obtenidos:", data))
+    .catch(error => console.error("Error en la petición:", error));</code></pre>
+                </section>
+                <section>
+                    <h3>Manejo de respuestas HTTP</h3>
+                </section>
+                <section>
+                    <p>Podemos verificar si una petición fue exitosa con `response.ok`.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+fetch('https://api.example.com/data')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Error HTTP: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => console.log("Datos obtenidos:", data))
+    .catch(error => console.error("Error en la petición:", error));</code></pre>
+                </section>
+                <section>
+                    <h3>Realizando una petición POST</h3>
+                </section>
+                <section>
+                    <p>Podemos enviar datos a una API utilizando `fetch` con `POST`.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+fetch('https://api.example.com/data', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ nombre: 'Juan', edad: 25 })
+})
+.then(response => response.json())
+.then(data => console.log("Respuesta del servidor:", data))
+.catch(error => console.error("Error en la petición:", error));</code></pre>
+                </section>
+                <section>
+                    <h3>Usando `fetch` con Async/Await</h3>
+                </section>
+                <section>
+                    <p>`fetch` se puede usar con `async/await` para mayor claridad.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+async function obtenerDatos() {
+    try {
+        const response = await fetch('https://api.example.com/data');
+        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+        
+        const datos = await response.json();
+        console.log("Datos obtenidos:", datos);
+    } catch (error) {
+        console.error("Error capturado:", error);
+    }
+}
+
+obtenerDatos();</code></pre>
+                </section>
+                <section>
+                    <h3>Ejemplo</h3>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+async function obtenerUsuarioYPedidos() {
+    try {
+        const [usuario, pedidos] = await Promise.all([
+            fetch('https://api.example.com/user').then(res => res.json()),
+            fetch('https://api.example.com/orders').then(res => res.json())
+        ]);
+
+        console.log("Usuario:", usuario);
+        console.log("Pedidos:", pedidos);
+    } catch (error) {
+        console.error("Error en la carga de datos:", error);
+    }
+}
+
+obtenerUsuarioYPedidos();</code></pre>
+                </section>
+                <section>
+                    <p>✅ Se ejecutan ambas peticiones en paralelo, mejorando el rendimiento.</p>
+                </section>
+            </section>
+
+            <!-- Desestructuración de Objetos -->
+            <section>
+                <section>
+                    <h2>Desestructuración de Objetos</h2>
+                </section>
+                <section>
+                    <p>La desestructuración permite extraer valores de objetos y arrays fácilmente.</p>
+                </section>
+                <section>
+                    <p>✅ Hace el código más limpio y conciso.</p>
+                </section>
+                <section>
+                    <h3>Ejemplo básico de desestructuración</h3>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+const usuario = { nombre: "Juan", edad: 25, pais: "España" };
+const { nombre, edad } = usuario;
+
+console.log(nombre, edad); // "Juan", 25</code></pre>
+                </section>
+                <section>
+                    <h3>Uso en parámetros de funciones</h3>
+                </section>
+                <section>
+                    <p>Podemos extraer valores directamente en los parámetros de una función.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+function mostrarUsuario({ nombre, pais }) {
+    console.log(`Nombre: ${nombre}, País: ${pais}`);
+}
+
+const persona = { nombre: "Ana", edad: 30, pais: "México" };
+mostrarUsuario(persona);</code></pre>
+                </section>
+                <section>
+                    <h3>Valores por defecto</h3>
+                </section>
+                <section>
+                    <p>Podemos asignar valores por defecto en caso de que una propiedad no exista.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+const producto = { nombre: "Laptop", precio: 1000 };
+const { nombre, stock = 10 } = producto;
+
+console.log(stock); // 10 (valor por defecto)</code></pre>
+                </section>
+                <section>
+                    <h3>Renombrando variables</h3>
+                </section>
+                <section>
+                    <p>Podemos renombrar las variables extraídas con `:`.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+const usuario = { nombre: "Pedro", edad: 22 };
+const { nombre: nombreUsuario, edad: edadUsuario } = usuario;
+
+console.log(nombreUsuario, edadUsuario); // "Pedro", 22</code></pre>
+                </section>
+                <section>
+                    <h3>Desestructuración en arreglos</h3>
+                </section>
+                <section>
+                    <p>También funciona con arreglos, asignando variables por posición.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+const colores = ["Rojo", "Verde", "Azul"];
+const [primerColor, segundoColor] = colores;
+
+console.log(primerColor, segundoColor); // "Rojo", "Verde"</code></pre>
+                </section>
+                <section>
+                    <h3>Omitiendo valores en arreglos</h3>
+                </section>
+                <section>
+                    <p>Podemos omitir valores utilizando `,`.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+const numeros = [1, 2, 3, 4, 5];
+const [primero, , tercero] = numeros;
+
+console.log(primero, tercero); // 1, 3</code></pre>
+                </section>
+                <section>
+                    <h3>Uso en combinación con `fetch`</h3>
+                </section>
+                <section>
+                    <p>Podemos extraer datos directamente de respuestas JSON.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">
+async function obtenerUsuario() {
+    const response = await fetch('https://api.example.com/user');
+    const { nombre, edad } = await response.json();
+
+    console.log(`Nombre: ${nombre}, Edad: ${edad}`);
+}
+
+obtenerUsuario();</code></pre>
+                </section>
+                <section>
+                    <p>✅ Permite acceder a los datos de una API de manera rápida y clara.</p>
+                </section>
+            </section>
+
+            <!-- Resumen -->
+            <section>
+                <section>
+                    <h2>Resumen</h2>
+                </section>
+                <section>
+                    <p>✅ Promesas permiten manejar la asincronía sin bloquear el código.</p>
+                </section>
+                <section>
+                    <p>✅ Async/Await simplifica el uso de Promesas.</p>
+                </section>
+                <section>
+                    <p>✅ Fetch facilita la comunicación con APIs.</p>
+                </section>
+                <section>
+                    <p>✅ Desestructuración mejora la manipulación de objetos en JavaScript.</p>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            plugins: [RevealHighlight],
+        });
+    </script>
+</body>
+</html>
