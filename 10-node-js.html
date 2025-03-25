@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Node.js</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Portada -->
+      <section>
+        <h2>Node.js</h2>
+        <p>Semestre 1, 2025</p>
+      </section>
+
+      <!-- ¿Qué es Node.js? -->
+      <section>
+        <section><h2>¿Qué es Node.js?</h2></section>
+        <section><p>Node.js es un entorno de ejecución de JavaScript fuera del navegador.</p></section>
+        <section><p>No es un lenguaje, es un runtime para ejecutar JavaScript del lado del servidor.</p></section>
+        <section><p>Permite usar JavaScript tanto en el frontend como en el backend.</p></section>
+      </section>
+
+      <!-- Instalación y verificación -->
+      <section>
+        <section><h2>Instalación y verificación</h2></section>
+        <section>
+            <p>
+                Descargar desde <a href="https://nodejs.org">https://nodejs.org</a> (usar versión LTS).
+            </p>
+        </section>
+        <section>
+            <p>Verificar la versión instada:</p>
+            <pre><code>node -v      # versión de node</code></pre></section>
+        <section>
+            <p>Correr scripts:</p>
+            <pre><code>node archivo.js     # ejecutar un archivo
+node .              # si hay un index.js</code></pre></section>
+      </section>
+
+      <!-- NPM -->
+      <section>
+        <section>
+            <h2>NPM</h2>
+            <h4>Node Package Manager</h4>
+        </section>
+        <section><p>Gestor de paquetes oficial de Node.js.</p></section>
+        <section><pre><code>npm init -y</code></pre></section>
+        <section>
+            <p>Crea un archivo package.json en donde se puede configurar información del proyecto y se guardan las versiones de los paquetes instalados.</p>
+        </section>
+        <section><p>`node_modules` contiene las dependencias instaladas.</p></section>
+        <section><p>Debe agregarse a `.gitignore`.</p></section>
+        <section>
+            <h1>NUNCA SE VERSIONA EL node_modules</h1>
+        </section>
+        <section>
+            <p>Para poder utilizar la notación de export/import, la notación de ES6 (ECMAScript 6: especificación de lenguaje de la que se basa Javascript) es necesario agregar la siguiente línea en el packages.json</p>
+        </section>
+        <section><p>"type": "module"</p></section>
+        <section>
+            <pre>
+                <code>
+{
+    "name": "nd",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "description": "",
+    "dependencies": {
+    }
+} 
+                </code>
+            </pre>
+        </section>
+      </section>
+
+      <!-- Módulos -->
+      <section>
+        <section><h2>Módulos</h2></section>
+        <section>
+            <p>Archivo de Javascript que <b>exporta</b> su código para ser utilizado en otros scripts.</p>
+        </section>
+        <section>
+            <p>
+                Desde un módulo es posible exportar funciones, clases, objetos y variables hacia el main. Se utiliza la sintaxis de <b>export</b> e <b>import</b>
+            </p>
+        </section>
+        <section>
+            <pre><code class="javascript">
+// Exportar explicitamente una funcion
+export function saludo() {
+    console.log("hello world")
+}
+
+// Exportar explicitamente una variable
+export const nombre = "Modulo"
+            </code></pre>
+        </section>
+        <section>
+            <p>Es posible exportar más de una estructura. En el principal hacemos:</p>
+            <pre><code>
+import { saludo, nombre } from "./modulo.js";
+
+saludo()
+console.log(nombre)  
+            </code></pre>
+        </section>
+        <section>
+            <p>También es posible exportar un (solo uno por módulo) valor predeterminado. Para esto se usa la sintaxis de <b>export default</b></p>
+        </section>
+        <section>
+            <pre><code class="javascript">
+const predeterminado = {
+    mensaje: "hello world"
+}
+
+export default predeterminado;                
+            </code></pre>
+        </section>
+        <section>
+            <p>En el main se puede usar cualquier nombre para importar el módulo:</p>
+            <pre><code class="javascript">
+import objeto from "./modulo.js";
+
+console.log(objeto);    
+            </code></pre>
+        </section>
+        <section><h3>Ejemplos</h3></section>
+        <section><pre><code>// operaciones.js
+
+export function sumar(a, b) {
+  return a + b;
+}</code></pre></section>
+        <section><pre><code>// principal.js
+
+import { sumar } from './operaciones.js';
+console.log(sumar(2, 3));</code></pre></section>
+        <section><pre><code>// mensaje.js
+
+export default "Hola desde Node";</code></pre></section>
+        <section><pre><code>// app.js
+
+import saludo from './mensaje.js';
+console.log(saludo);</code></pre></section>
+      </section>
+
+      <!-- Objeto process -->
+      <section>
+        <section><h2>El objeto process</h2></section>
+        <section>
+            <p>Process es un objeto global (igual que console) que brinda información sobre el proceso actual que está corriendo Node.</p>
+        </section>
+        <section>
+            <p>Este brinda propiedades y métodos para poder interactuar con  el proceso que está corriendo.</p>
+        </section>
+        <section>
+            <p>Versión de Node:</p>
+            <pre><code>console.log(process.version);</code></pre>
+        </section>
+      </section>
+
+      <section>
+        <section><h2>Eventos</h2></section>
+        <section><p>Al igual que los navegadores web; Node Js cuenta con su propio loop de eventos.</p></section>
+        <section><p>Esto permite dividir la carga de operaciones en diferentes hilos (threads) y de esa forma prevenir operaciones que bloqueen nuestra aplicación.</p></section>
+        <section><p><b>Asynchronous Event-Driven Javascript Runtime.</b></p></section>
+        <section><pre><code>process.on('exit', () => {
+    console.log('El proceso está por terminar');
+});</code></pre></section>
+        <section>
+            <p>Es posible  crear eventos propios. Esto se puede hacer de la siguiente forma:</p>
+        </section>
+        <section>
+            <pre><code class="javascript">
+import { EventEmitter } from "events";
+const emisor = new EventEmitter();
+
+emisor.on("disparar", () => {
+    console.log("Bang 🔫");
+});
+
+emisor.emit("disparar");
+            </code></pre>
+        </section>
+      </section>
+
+      <!-- FileSystem -->
+      <section>
+        <section><h2>FileSystem</h2></section>
+        <section><p>Para interactuar con archivos de forma síncrona es posible utilizar:</p></section>
+        <section><pre><code>import { readFileSync } from 'fs';
+
+const contenido = readFileSync('archivo.txt', 'utf-8');
+console.log(contenido);</code></pre></section>
+        <section>
+            <p>Para interactuar con archivos de forma asíncrona es posible utilizar:</p>
+        </section>
+        <section><pre><code>import { readFile } from 'fs';
+
+readFile('archivo.txt', 'utf-8', (err, data) => {
+  if (err) throw err;
+  console.log(data);
+});</code></pre></section>
+        <section><p>La terminación Sync hace referencia en que se corre de forma síncrona; es decir que puede causar un bloqueo.</p></section>
+        <section><pre><code>import { readFile } from 'fs/promises';
+
+const texto = await readFile('archivo.txt', 'utf-8');
+console.log(texto);</code></pre></section>
+        <section>
+            <p>Siempre es mejor usar promesas:</p>
+        </section>
+        <section>
+            <pre><code class="javascript">
+import { readFile } from "fs/promises";
+
+async function archivo() {
+    const archivo = await readFile("ejemplo.txt", "utf8");
+    console.log(archivo);
+}
+
+archivo();
+            </code></pre>
+        </section>
+      </section>
+
+      <!-- Resumen -->
+      <section>
+        <section><h2>Resumen</h2></section>
+        <section><p>✅ Ejecuta JavaScript en el servidor</p></section>
+        <section><p>✅ Es asíncrono y orientado a eventos</p></section>
+        <section><p>✅ Tiene un ecosistema robusto gracias a NPM</p></section>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({ plugins: [RevealHighlight] });
+  </script>
+</body>
+</html>
