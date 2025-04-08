@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción a React</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Portada -->
+            <section>
+                <h2>React</h2>
+                <p>Semestre 1, 2025</p>
+            </section>
+
+            <!-- ¿Qué es React? -->
+            <section>
+                <section>
+                    <h2>¿Qué es React?</h2>
+                </section>
+                <section>
+                    <p>Biblioteca de JavaScript para construir interfaces de usuario interactivas.</p>
+                </section>
+                <section>
+                    <p>Desarrollado por Meta (anteriormente Facebook).</p>
+                </section>
+                <section>
+                    <p>Permite crear aplicaciones rápidas, escalables y mantenibles.</p>
+                </section>
+            </section>
+
+            <!-- ¿Qué NO es React? -->
+            <section>
+                <section>
+                    <h2>¿Qué NO es React?</h2>
+                </section>
+                <section>
+                    <p>No es un framework, no influye en la arquitectura.</p>
+                </section>
+                <section>
+                    <p>No gestiona directamente el backend.</p>
+                </section>
+                <section>
+                    <p>No es un lenguaje de programación, sino una biblioteca.</p>
+                </section>
+            </section>
+
+            <!-- Historia -->
+            <section>
+                <section>
+                    <h2>Historia</h2>
+                </section>
+                <section>
+                    <p>Creado en 2013 por Jordan Walke en Meta.</p>
+                </section>
+                <section>
+                    <p>Usado inicialmente en el news feed de Facebook.</p>
+                </section>
+                <section>
+                    <p>Se volvió open source y su adopción creció rápidamente.</p>
+                </section>
+            </section>
+
+            <!-- Uso de React -->
+            <section>
+                <section>
+                    <h2>Usos</h2>
+                </section>
+                <section>
+                    <p>Creación de SPAs (Single Page Applications).</p>
+                </section>
+                <section>
+                    <p>Usado por grandes empresas como Facebook, Instagram, Netflix.</p>
+                </section>
+                <section>
+                    <p>Enfocado en la reutilización de componentes.</p>
+                </section>
+            </section>
+
+            <!-- componentes -->
+            <section>
+                <section>
+                    <h2>Componentes</h2>
+                </section>
+                <section>
+                    <p>Unidad de código reutilizable que provee una interfaz de usuario.</p>
+                </section>
+                <section>
+                    <p>Permiten dividir la interfaz en pequeñas partes independientes.</p>
+                </section>
+                <section>
+                    <p>Anidación de componentes.</p>
+                </section>
+                <section>
+                    <h3>Ventajas de Usar Componentes</h3>
+                    <ul>
+                        <li>Reutilización de código.</li>
+                        <li>Modularidad y mantenibilidad.</li>
+                        <li>Facilitan la composición de interfaces complejas.</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- Componentes en React -->
+            <section>
+                <section>
+                    <h2>Tipos de Componentes</h2>
+                </section>
+                <section>
+                    <h3>Componentes Funcionales</h3>
+                </section>
+                <section>
+                    <p>Definidos como funciones de JavaScript.</p>
+                </section>
+                <section>
+                    <p>Sintaxis más simple y directa.</p>
+                </section>
+                <section>
+                    <p>Utilizan Hooks para manejar el estado y el ciclo de vida.</p>
+                </section>
+                <section>
+                    <p>Devuelven JSX para renderizar la interfaz.</p>
+                </section>
+                <section>
+                    <h3>Ejemplo:</h3>
+                    <pre><code class="javascript">function Saludo() {
+    return &lt;h1&gt;¡Hola, Mundo!&lt;/h1&gt;;
+}</code></pre>
+                </section>
+                <section>
+                    <p>Reciben propiedades (props) como entrada y retornan los elementos que se van a mostrar.</p>
+                </section>
+                <section>
+                    <p>El ecosistema de React está migrando hacia componentes funcionales debido a su eficiencia y simplicidad.</p>
+                </section>
+                <section>
+                    <h3>Ventajas</h3>
+                    <ul>
+                        <li>Código más limpio y fácil de leer.</li>
+                        <li>Mejor rendimiento al no necesitar instancias de clase.</li>
+                        <li>Simplificación con Hooks (como useState y useEffect).</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Componentes de Clase</h3>
+                </section>
+                <section>
+                    <p>Clases que extienden a la React.Component class utilizando la sintaxis de clases de ES6.</p>
+                </section>
+                <section>
+                    <p>Para mostrar el contenido tienen una función render que retorna el elemento que se va a mostrar.</p>
+                </section>
+                <section>
+                    <h3>Ejemplo:</h3>
+                    <pre><code class="javascript">class Saludo extends React.Component {
+    render() {
+        return &lt;h1&gt;¡Hola, Mundo!&lt;/h1&gt;;
+    }
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Desventajas</h3>
+                    <ul>
+                        <li>Código más extenso y complejo.</li>
+                        <li>Dificultad para usar conceptos modernos como Hooks.</li>
+                        <li>Menor rendimiento en comparación con los funcionales.</li>
+                    </ul>
+                </section>
+            </section>
+
+
+            <!-- Props -->
+            <section>
+                <section>
+                    <h2>Props</h2>
+                </section>
+                <section>
+                    <p>Las props (propiedades) son datos que los componentes padres pasan a los componentes hijos.</p>
+                </section>
+                <section>
+                    <h3>Características</h3>
+                    <ul>
+                        <li>Permiten la comunicación entre componentes.</li>
+                        <li>Son inmutables: No pueden ser modificadas por el componente hijo.</li>
+                        <li>Se pasan como atributos en el componente padre.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Uso de Props</h3>
+                    <p>Se accede a ellas mediante el argumento de la función.</p>
+                    <pre><code class="javascript">function Saludo(props) {
+    return &lt;h1&gt;¡Hola, {props.nombre}!&lt;/h1&gt;;
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Uso en el Componente Padre</h3>
+                    <pre><code class="javascript">function App() {
+    return &lt;Saludo nombre="Juan" /&gt;;
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Ejemplo en Clase</h3>
+                    <pre><code class="javascript">class Saludo extends React.Component {
+    render() {
+        return &lt;h1&gt;¡Hola, {this.props.nombre}!&lt;/h1&gt;;
+    }
+}</code></pre>
+                </section>
+                <section>
+                    <h3>Ejemplo en Uso</h3>
+                    <p>Si se llama el componente así:</p>
+                    <pre><code class="javascript">&lt;Saludo nombre="Juan" /&gt;</code></pre>
+                    <p>El resultado será:</p>
+                    <p><strong>¡Hola, Juan!</strong></p>
+                </section>
+                <section>
+                    <h3>Buenas Prácticas</h3>
+                    <ul>
+                        <li>Utilizar nombres claros y descriptivos.</li>
+                        <li>Validar las props usando librerías como PropTypes.</li>
+                        <li>Evitar el uso de props innecesarias para reducir el tamaño del componente.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Ventajas</h3>
+                    <ul>
+                        <li>Facilitan la reutilización de componentes.</li>
+                        <li>Permiten que los componentes hijos reciban datos desde el padre.</li>
+                        <li>Hacen posible el desarrollo modular.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Limitaciones</h3>
+                    <ul>
+                        <li>No pueden ser modificadas directamente por el componente hijo.</li>
+                        <li>Si se necesita modificar, es mejor usar estado (state).</li>
+                    </ul>
+                </section>
+            </section>
+            
+
+            <!-- JSX -->
+            <section>
+                <section>
+                    <h2>JSX</h2>
+                </section>
+                <section>
+                    <p>JSX (JavaScript XML) es una extensión de la sintaxis de JavaScript que permite escribir estructuras similares a HTML dentro del código JS.</p>
+                </section>
+                <section>
+                    <p>Es más legible que simplemente crear los elementos en el DOM.</p>
+                </section>
+                <section>
+                    <h3>¿Por qué usar JSX?</h3>
+                    <ul>
+                        <li>Facilita la legibilidad del código.</li>
+                        <li>Permite combinar estructura y lógica en un solo archivo.</li>
+                        <li>Hace más intuitiva la creación de componentes en React.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Ventajas</h3>
+                    <ul>
+                        <li>Integración directa con funciones y variables de JavaScript.</li>
+                        <li>Permite escribir componentes de manera declarativa.</li>
+                        <li>Código más cercano a la estructura visual deseada.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Ejemplo</h3>
+                    <pre><code class="javascript">function Saludo() {
+    const nombre = "Juan";
+    return &lt;h1&gt;Hola, {nombre}!&lt;/h1&gt;;
+}</code></pre>
+                    <p>El contenido dentro de las llaves <code>{}</code> se interpreta como JavaScript.</p>
+                </section>
+                <section>
+                    <h3>Transpilación de JSX</h3>
+                </section>
+                <section>
+                    <p><b>Trnaspilar:</b> combinación de las palabras transformation y compiling. Es el proceso de convertir de un lenguaje de alto nivel (jsx) a otro lenguaje de alto nivel (javascript)</p>
+                </section>
+                <section>
+                    <p>El navegador no entiende JSX directamente.</p>
+                </section>
+                <section>
+                    <p>JSX se convierte a JavaScript puro mediante herramientas como Babel.</p>
+                </section>
+                <section>
+                    <pre><code class="javascript">React.createElement('h1', null, 'Hola, Mundo!');</code></pre>
+                </section>
+                <section>
+                    <p>El código transpilado puede ser más extenso, pero garantiza compatibilidad.</p>
+                </section>
+                <section>
+                    <h3>JSX vs HTML</h3>
+                    <p>Aunque JSX se parece a HTML, tiene diferencias clave:</p>
+                    <ul>
+                        <li>Usa <code>className</code> en lugar de <code>class</code>.</li>
+                        <li>Los elementos deben estar correctamente anidados.</li>
+                        <li>Siempre debe haber un solo elemento raíz en el retorno.</li>
+                    </ul>
+                </section>
+            </section>
+            
+
+            <!-- Babel -->
+            <section>
+                <section>
+                    <h2>Babel</h2>
+                </section>
+                <section>
+                    <p>Babel es un transpilador de JavaScript que permite usar características modernas del lenguaje en navegadores antiguos.</p>
+                </section>
+                <section>
+                    <h3>¿Por qué es esencial en React?</h3>
+                    <ul>
+                        <li>Convierte JSX a JavaScript puro.</li>
+                        <li>Transforma código moderno a versiones anteriores.</li>
+                        <li>Permite el uso de nuevas características como async/await.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>Babel toma el código JSX y lo convierte en llamadas a React.createElement().</p>
+                    <pre><code class="javascript">// Código JSX
+const elemento = &lt;h1&gt;¡Hola!&lt;/h1&gt;;
+
+// Código convertido por Babel
+const elemento = React.createElement('h1', null, '¡Hola!');
+</code></pre>
+                </section>
+            </section>
+            
+
+            <!-- Virtual DOM -->
+            <section>
+                <section>
+                    <h2>Virtual DOM</h2>
+                </section>
+                <section>
+                    <p>El Virtual DOM es una representación ligera del DOM real en memoria.</p>
+                </section>
+                <section>
+                    <p>Se utiliza en React para optimizar el proceso de actualizar la interfaz de usuario.</p>
+                </section>
+                <section>
+                    <p>A diferencia del DOM, el VDOM trabaja desde la memoria por lo que es más rápido y menos pesado.</p>
+                </section>
+                <section>
+                    <p>Es una “copia” en la que todos los cambios que se den primero se reflejan en este y luego se pasan al DOM.</p>
+                </section>
+                <section>
+                    <h3>Ventajas</h3>
+                    <ul>
+                        <li>Actualiza solo las partes necesarias de la interfaz.</li>
+                        <li>Mejora el rendimiento al reducir operaciones costosas en el DOM real.</li>
+                        <li>Facilita el proceso de reconciliación y renderizado.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>¿Cómo funciona el Virtual DOM?</h3>
+                    <p>Cuando el estado de un componente cambia:</p>
+                    <ul>
+                        <ol>React crea un nuevo Virtual DOM actualizado.</ol>
+                        <ol>Compara el nuevo Virtual DOM con el anterior (Diffing).</ol>
+                        <ol>Solo aplica los cambios necesarios al DOM real (Reconciliación).</ol>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Beneficios</h3>
+                    <ul>
+                        <li>Actualizaciones más rápidas y eficientes.</li>
+                        <li>Minimiza manipulaciones directas en el DOM.</li>
+                        <li>Mejora la experiencia del usuario al evitar bloqueos de la interfaz.</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- className -->
+            <section>
+                <section><h2>className</h2></section>
+                <section>
+                    <p>Es la forma en la que se le pueden definir clases a los componentes usando JSX. Su funcionalidad es igual a la del atributo class de HTML.</p>
+                </section>
+                <section>
+                    <pre><code>function Saludo(props) {
+    return &lt;h1 className="textoRojo"&gt;Hola {props.nombre}&lt;/h1&gt;;
+}</code></pre>
+                </section>
+            </section>
+
+            <!-- hooks -->
+            <section>
+                <section>
+                    <h2>Hooks</h2>
+                </section>
+                <section>
+                    <p>Los Hooks son funciones que permiten usar estado y otras características de React sin escribir componentes de clase.</p>
+                </section>
+                <section>
+                    <p>El estado hace referencia a la data que un componente maneja dentro de si mismo.</p>
+                </section>
+                <section>
+                    <p>Introducidos en React 16.8 para facilitar el manejo del estado y el ciclo de vida en componentes funcionales.</p>
+                </section>
+                <section>
+                    <p>Gracias a los Hooks, los componentes funcionales ahora pueden ser tan poderosos como los de clase.</p>
+                </section>
+                <section>
+                    <h3>Hooks más comunes</h3>
+                </section>
+                <section>
+                    <ul style="list-style-type: none;">
+                        <li><strong>useState</strong>: Maneja el estado local del componente.</li>
+                        <li><strong>useEffect</strong>: Ejecuta efectos secundarios (fetch, subscripciones, etc.).</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>useState</h2>
+                </section>
+                <section>
+                    <p>Permite declarar variables de estado en un componente funcional.</p>
+                </section>
+                <section>
+                    <h3>Sintaxis básica</h3>
+                    <pre><code class="javascript">const [contador, setContador] = useState(0);</code></pre>
+                    <ul>
+                        <li><code>contador</code>: valor del estado.</li>
+                        <li><code>setContador</code>: función para actualizar ese estado.</li>
+                    </ul>
+                </section>
+                <section>
+                    <p>En el ejemplo anterior se está modificando el estado de la variable <b>contador</b> utilizando el método <b>setContador</b> y su valor inicial es de 0 ya que lo definimos en nuestro <b>useState(0)</b></p>
+                </section>
+                <section>
+                    <h3>Internamente</h3>
+                    <ul>
+                        <li>React almacena el valor del estado internamente.</li>
+                        <li>Al llamar a <code>setContador</code>, actualiza el valor y vuelve a renderizar el componente.</li>
+                        <li>El cambio de estado es asíncrono y eficiente.</li>
+                    </ul>
+                </section>
+            </section>
+            
+        
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize();
+    </script>
+</body>
+</html>
