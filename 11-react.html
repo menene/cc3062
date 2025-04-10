@@ -444,6 +444,58 @@ const elemento = React.createElement('h1', null, '¡Hola!');
                         <li>El cambio de estado es asíncrono y eficiente.</li>
                     </ul>
                 </section>
+
+
+
+
+
+
+                <section>
+                    <h2>useEffect</h2>
+                </section>
+                <section>
+                    <p>Permite ejecutar efectos secundarios en componentes funcionales.</p>
+                    <p>Se utiliza para tareas como peticiones a APIs, suscripciones, temporizadores, y manipulación del DOM.</p>
+                </section>
+                <section>
+                    <h3>Sintaxis básica</h3>
+                    <pre><code class="javascript">useEffect(() => {
+    // lógica del efecto
+}, []);</code></pre>
+                    <ul>
+                        <li>El primer argumento es una función que contiene el efecto.</li>
+                        <li>El segundo argumento es un array de dependencias.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Ejemplo: Ejecutar una vez</h3>
+                    <pre><code class="javascript">useEffect(() => {
+    console.log('El componente se montó');
+}, []);</code></pre>
+                    <p>El efecto se ejecuta solo una vez.</p>
+                </section>
+                <section>
+                    <h3>Ejemplo: Ejecutar cuando cambie el estado</h3>
+                    <pre><code class="javascript">useEffect(() => {
+    console.log('El contador cambió');
+}, [contador]);</code></pre>
+                    <p>El efecto se ejecuta cada vez que <code>contador</code> cambia.</p>
+                </section>
+                <section>
+                    <h3>Internamente</h3>
+                    <ul>
+                        <li>Ejecuta el código del efecto después del renderizado.</li>
+                        <li>Repite el efecto si cambian las dependencias.</li>
+                        <li>Limpia efectos anteriores si el componente se desmonta o cambian dependencias.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Dependencias</h3>
+                    <ul>
+                        <li>Variables que, si cambian, deben volver a ejecutar el efecto.</li>
+                        <li>Si pones un array vacío <code>[]</code>, el efecto solo corre una vez.</li>
+                    </ul>
+                </section>
             </section>
             
         
