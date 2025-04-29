@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Vite</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/dracula.min.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section>
+                <h2>Vite</h2>
+                <p>Semestre 1, 2025</p>
+            </section>
+
+            <section>
+                <section><h2>¿Qué es Vite?</h2></section>
+                <section><p>"Vite" significa "rápido" en francés.</p></section>
+                <section><p>Herramienta de desarrollo moderna y rápida.</p></section>
+                <section><p>Creada por Evan You, el creador de Vue.js.</p></section>
+                <section><p>Alternativa a Webpack y Create React Application (CRA).</p></section>
+            </section>
+
+            <section>
+                <section><h2>Usos</h2></section>
+                <section><p>Transpilaciones más rápidas.</p></section>
+                <section><p>Recarga instantánea al guardar cambios.</p></section>
+                <section><p>Eliminación de bundle innecesario en desarrollo.</p></section>
+                <section><p>Builds optimizados en producción.</p></section>
+            </section>
+
+            <section>
+                <section><h2>¿Cómo funciona Vite?</h2></section>
+                <section><p>Modo Desarrollo:</p><p>Utiliza ES Modules nativos del navegador.</p></section>
+                <section><p>Modo Producción:</p><p>Usa Rollup para empaquetar y optimizar.</p></section>
+            </section>
+
+            <section>
+                <section><h2>Vite + React</h2></section>
+                <section><p>Plantillas oficiales para React y React + TypeScript.</p></section>
+                <section><p>Incluye JSX + Fast Refresh listos para usar.</p></section>
+                <section><p>Más rápido y ligero que Create React App (CRA).</p></section>
+            </section>
+
+            <section>
+                <section><h2>Crear un Proyecto</h2></section>
+                <section>
+                    <pre>
+                        <code>
+npm create vite@latest
+cd my-app
+npm install
+npm run dev
+                        </code>
+                    </pre>
+                </section>
+            </section>
+
+            <section>
+                <section><h2>JSX, CSS y Assets</h2></section>
+                <section><p>JSX funciona nativamente sin configuración adicional.</p></section>
+                <section><p>Importar CSS directamente en los componentes.</p></section>
+                <section><p>Importar imágenes con `import` o usar la carpeta public/.</p></section>
+            </section>
+
+            <section>
+                <section><h2>Build de Producción</h2></section>
+                <section><pre><code>npm run build</code></pre></section>
+                <section><p>Se genera carpeta /dist lista para desplegar.</p></section>
+                <section><p>Netlify, Vercel, Firebase, GitHub Pages, etc.</p></section>
+            </section>
+
+            <section>
+                <section><h2>Buenas Prácticas</h2></section>
+                <section>
+                    <ul>
+                        <li>Separar componentes y assets</li>
+                        <li>Integrar ESLint y Prettier</li>
+                        <li>Extensiones de Vite y DevTools</li>
+                    </ul>
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize();
+    </script>
+</body>
+</html>
