@@ -84,6 +84,49 @@ npm run dev
                 </section>
             </section>
 
+            <section>
+                <section>
+                  <h3>Aliases</h3>
+                </section>
+                <section>
+                  <p>Los <strong>alias</strong> permiten usar rutas más limpias y consistentes al importar módulos.</p>
+                </section>
+                <section>
+                  <pre><code class="javascript">
+resolve: {
+    alias: {
+        '@pages': '/src/pages',
+        '@components': '/src/components',
+        '@hooks': '/src/hooks',
+        '@assets': '/src/assets',
+        '@styles': '/src/styles'
+    }
+}
+                  </code></pre>
+                </section>
+                <section>
+                  <p>Se puede importar archivos sin usar rutas relativas largas como:</p>
+                  <pre><code class="javascript">
+// Sin alias
+import Card from '../../../components/ui/Card'
+                  </code></pre>
+                </section>
+                <section>
+                  <p>Con alias:</p>
+                  <pre><code class="javascript">
+import Card from '@components/ui/Card'
+                  </code></pre>
+                </section>
+                <section>
+                  <p>Ventajas:</p>
+                  <ul style="list-style: none;">
+                    <li>Código más limpio y legible</li>
+                    <li>Menos errores al mover archivos</li>
+                    <li>Ayuda a mantener una estructura clara del proyecto</li>
+                  </ul>
+                </section>
+              </section>
+
         </div>
     </div>
 
